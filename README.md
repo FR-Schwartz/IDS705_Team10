@@ -20,7 +20,7 @@ The code was tested on:
 ### Prepocessing 
 We used Deep Learning Methods specialized in the class of problems known as Semantic image Segmentation. In semantic segmentation, the goal is to classify each voxel (3D pixel) in the input image. We segmented each voxel in the MRI scan to be either gadolinium-enhancing tumor (ET — label 4), the edematous/invaded tissue (ED — label 2), the necrotic tumor core (NCR — label 1), and any tissue not belonging to the previous three, which is unaffected brain tissue (label 0). 
 
-Unfortuantely, the dataset is not publicly available but we do provide few samples in `.00_source/train`. The original images had a shape of 240x240x155. The labels/ground truth can be found in `.00_source/labels` We also provide ways to read the dataset. To learn more about it, please check `.10_code/explore.ipynb`. 
+Unfortuantely, the dataset is not publicly available but we do provide a sample in `.00_source/train`. The original images had a shape of 240x240x155. The labels/ground truth can be found in `.00_source/labels` We also provide ways to read the dataset. To learn more about it, please check `.10_code/explore.ipynb`. 
 
 During data processing, we also tried moving data from Google Drive to Google Cloud Storage. We did this because we tried implemnting distributed model training (using TPUStrategy API by tensorflow framework) to accommodate for expensive computation.  While we could not successfully leverage Google Colab Pro for TPUStrategy API, we do provide `.10_code/transfer_google_drive_to_GCS.ipynb` for you to replicate the work provided you use Colab Pro plus.
 
