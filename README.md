@@ -15,6 +15,9 @@ The code was tested on:
 - tensorflow 2.8.0
 - python 3.7.13
 - pickle 4.0
+- gcsfuse 0.40.0
+- tensorflow_hub 0.11.0
+- tensorflow_gcs_config 2.8.0
 
 ## Instruction
 
