@@ -42,6 +42,10 @@ We evaluated the performance of our model using the same methods as the BraTS ch
 
 The cross-entropy loss (bce-argmax) model partially detected the contrast enhancing tumor zone (blue) and correctly classified the healthy tissue (purple). All models correctly detected the healthy tissue (label 0, labeled with _prob0) but the dice model detected less of the normal anatomy as abnormal. The dice and weighted dice models (dice-argmax and wdice_model-argmax) performed well at detecting the enhancing tumor (yellow), the necrosis zone (dark blue) and the edema zone (light blue), as well as the healthy tissue (purple). They mostly match the ground truth segmentation.
 
+# Video
+![Alt text](https://tinyurl.com/444f59pw "Demo")
+
+
 
 ## Contact
 Feel free to open an issue in github for any problems or questions.
