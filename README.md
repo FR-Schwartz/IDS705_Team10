@@ -32,7 +32,7 @@ During data processing, we also tried moving data from Google Drive to Google Cl
 Once your MRI has been preprocessed, the next step is to obtain a good initialization for the encoder. We used U-Net deep learning model in this problem. This resembles an encoder-decoder network where the first half of the network is a series of convolutional layers that decrease the size of the image after each layer while increasing the number of channels, culminating into a single dense layer composed of many channels and 1 pixel (22, 23). The second half of the network converts this dense layer back to an image of the dimension as that of the input image, but with the number of channels equal to the number of possible output classes. Thus, the final output represents the probabilities of each voxel belonging to each of the classes. Since we cannot expect the encoder-decoder mechanism to accurately form borders at the fine grained voxel-level, we add skip layer connections connecting across the “U” to guide the formation of voxel-level outputs (24-26).
 
 We train the dataset with U-net model using three different loss functions - 
-* Cross Entroy `10_code/Modeling_1.ipynb`
+* Cross Entropy `10_code/Modeling_1.ipynb`
 * Dice `.10_code/Modeling_3_DICE.ipynb`
 * Weighted Dice loss `.10_code/Modeling_7_wDICE.ipynb`
 
