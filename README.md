@@ -24,7 +24,7 @@ The code was tested on:
 ### Prepocessing 
 We used Deep Learning Methods specialized in the class of problems known as Semantic image Segmentation. In semantic segmentation, the goal is to classify each voxel (3D pixel) in the input image. We segmented each voxel in the MRI scan to be either gadolinium-enhancing tumor (ET — label 4), the edematous/invaded tissue (ED — label 2), the necrotic tumor core (NCR — label 1), and any tissue not belonging to the previous three, which is unaffected brain tissue (label 0). 
 
-Unfortuantely, the dataset is not publicly available but we do provide a sample in `.00_source/train`. The original images had a shape of 240x240x155. The labels/ground truth can be found in `.00_source/labels` We also provide ways to read the dataset. To learn more about it, please check `.10_code/explore.ipynb`. 
+Unfortuantely, the dataset is not publicly available but we do provide a sample in `.00_source/train`. The original images had a shape of 240x240x155. The labels/ground truth can be found in `.00_source/labels` We also provide ways to read the dataset. To learn more about it, please check `.10_code/explore.ipynb`. After we explored the train data in original format, we changed it to tensorflow protobuf for model training. The code for changing the format is available in `10_code/nii_to_tfrecord.ipynb`.
 
 During data processing, we also tried moving data from Google Drive to Google Cloud Storage. We did this because we tried implementing distributed model training (using TPUStrategy API by tensorflow framework) to accommodate for expensive computation.  While we could not successfully leverage Google Colab Pro for TPUStrategy API, we do provide `.10_code/transfer_google_drive_to_GCS.ipynb` and `10_code/Modeling_TPU.ipynb` for you to replicate the work provided you use Colab Pro plus.
 
@@ -32,7 +32,7 @@ During data processing, we also tried moving data from Google Drive to Google Cl
 Once your MRI has been preprocessed, the next step is to obtain a good initialization for the encoder. We used U-Net deep learning model in this problem. This resembles an encoder-decoder network where the first half of the network is a series of convolutional layers that decrease the size of the image after each layer while increasing the number of channels, culminating into a single dense layer composed of many channels and 1 pixel (22, 23). The second half of the network converts this dense layer back to an image of the dimension as that of the input image, but with the number of channels equal to the number of possible output classes. Thus, the final output represents the probabilities of each voxel belonging to each of the classes. Since we cannot expect the encoder-decoder mechanism to accurately form borders at the fine grained voxel-level, we add skip layer connections connecting across the “U” to guide the formation of voxel-level outputs (24-26).
 
 We train the dataset with U-net model using three different loss functions - 
-* Cross Entroy `10_code/Modeling_2.ipynb` 
+* Cross Entroy `10_code/Modeling_1.ipynb`
 * Dice `.10_code/Modeling_3_DICE.ipynb`
 * Weighted Dice loss `.10_code/Modeling_7_wDICE.ipynb`
 
@@ -115,5 +115,3 @@ Feel free to open an issue in github for any problems or questions.
 [31] Zhai X, Oliver A, Kolesnikov A, Beyer L, editors. S4l: Self-supervised semi-supervised learning. Proceedings of the IEEE/CVF International Conference on Computer Vision; 2019.
 
 [32] Kopp FK, Daerr H, Si-Mohamed S, Sauter AP, Ehn S, Fingerle AA, et al. Evaluation of a preclinical photon-counting CT prototype for pulmonary imaging. Scientific Reports. 2018;8(1):17386.
-
-
