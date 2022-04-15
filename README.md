@@ -14,6 +14,7 @@ The code was tested on:
 - nibabel 3.0.2
 - tensorflow 2.8.0
 - python 3.7.13
+- pickle 4.0
 
 ## Instruction
 
