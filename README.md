@@ -1,6 +1,8 @@
 
 # Brain Tumor Image Segmentation
-<img src="IDS705_Team10/30_results/Images/U-net Structure.JPG" width='600'>
+
+![Alt text](30_results/Images/U-netstructure.JPG "Architecture")
+
 
 ## Abstract
 The purpose of our project is to use computer vision algorithms to detect and segment a specific type of brain tumor – glioblastoma multiforme (GBM) – on clinical 3D MRI data. We used a dataset collected and labelled by the Radiological Society of North America (RSNA) Brain Tumor Segmentation (BraTS) Challenge 2021, which included 1251 cases. We split these into 747 training samples, 244 validation samples, and 258 test samples. Each case represents a patient with a known glioblastoma multiforme and contains four MRI sequences that each provide different information about the anatomical situation in the brain and the tumor. A fifth dataset for each patient contains the ground truth segmentation from the RSNA. We trained three U-nets with different loss functions (cross-entropy, dice and weighted dice) to segment the healthy brain tissue and the different tumor regions using google colab pro with one GPU. We were able to implement a deep learning algorithm that reasonably identified the healthy tissue, the affected brain tissue (edema zone), the enhancing tumoral rim, and the tumor core with dice similarity scores up to 80.5%. Our computer vision project was a success in segmenting glioblastoma multiforme from clinical MRI scans, though further refinement might be achieved with more GPU and implementation of transfer learning. 
@@ -11,7 +13,6 @@ The code was tested on:
 - numpy 1.21.5
 - nibabel 3.0.2
 - tensorflow 2.8.0
-
 
 ## Instruction
 
@@ -35,7 +36,7 @@ We also tried AutoEncoder as Transfer Learning process to help us transfer the 4
 ### Evaluation
 We evaluated the performance of our model using the same methods as the BraTS challenge applies to the submissions that they receive which is the Dice Similarity Coefficient, cross-entropy for each of the 4 labels.
 
-<img src="IDS705_Team10/30_results/Images/Visualization of models including weighted Dice.png" width='600'>
+![Alt text](30_results/Images/visualization.png "Predictions")
 
 The cross-entropy loss (bce-argmax) model partially detected the contrast enhancing tumor zone (blue) and correctly classified the healthy tissue (purple). All models correctly detected the healthy tissue (label 0, labeled with _prob0) but the dice model detected less of the normal anatomy as abnormal. The dice and weighted dice models (dice-argmax and wdice_model-argmax) performed well at detecting the enhancing tumor (yellow), the necrosis zone (dark blue) and the edema zone (light blue), as well as the healthy tissue (purple). They mostly match the ground truth segmentation.
 
